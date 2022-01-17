@@ -1,0 +1,67 @@
+With train set:
+    no preprocessing:
+        rank1avg: #za class se odlocimo glede na povprecen distance vseh elementov class
+            pix2pix: 4,67 #ze implementiran pix2pix feature extractor
+            lbp: 2,67 #limited binary pattern - metoda 'uniform'
+            lbp-default: 5,73 #lbp z metodo 'default' - pocasno ampak najboljse
+            lbp-default-10kbins: 4,67 #lbp z metodo 'default', histogram z 10k bini - isto hitro kot lbp z metodo 'uniform' ampak boljse
+        rank1: #klasicen rank1 - najmanjsi distance
+            pix2pix: 14,00
+            pix2pix-randForest: 14,40 #random forest na podlagi pix2pix vektorjev
+            lbp: 1,73
+            lbp-default: 9,73
+            lbp-default-10kbins: 8,13
+            lbp-10k-randForest: 4,8 #random forest na podlagi lbp vektorjev
+        rank1avgTop3: #povprecje najboljsih treh razdalj za vsak class
+            pix2pix: 8,4
+            lbp: 2,0
+            lbp-default: 6,53
+            lbp-default-10kbins: 6,93
+
+    histogram equalization: #povsod so slike crno-bele, tu se hist eq
+        rank1avg:
+            pix2pix: 8,93
+            lbp: 2,53
+            lbp-default: 4,53
+        rank1:
+            pix2pix: 18,4
+            pix2pix-randForest: 16,0
+            lbp: 2,13
+            lbp-default: 8,13
+            lbp-10k-randForest: 4,8
+        rank1avgTop3:
+            pix2pix: 10,67
+            lbp: 1,33
+            lbp-default: 6,0
+
+    edge augmentation: #dodan edge augmentation - na zaznanih robovih so slike rahlo potemnjene
+        rank1avg:
+            pix2pix: 4,53
+            lbp: 1,46
+            lbp-default: 4,13
+        rank1:
+            pix2pix: 14,53
+            pix2pix-randForest: 14,40
+            lbp: 2,0
+            lbp-default: 6,0
+            lbp-10k-randForest: 3,6
+        rank1avgTop3:
+            pix2pix: 9,2
+            lbp: 1,33
+            lbp-default: 4,53
+
+    edge augmentation and hist eq: 
+        rank1avg:
+            pix2pix: 7,73
+            lbp: 2,53
+            lbp-default: 4,67
+        rank1:
+            pix2pix: 16,53
+            pix2pix-randForest: 15,6
+            lbp: 2,13
+            lbp-default: 8,0
+            lbp-10k-randForest: 3,2
+        rank1avgTop3:
+            pix2pix: 9,33
+            lbp: 2,53
+            lbp-default: 6,8
